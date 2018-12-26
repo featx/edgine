@@ -6,6 +6,8 @@ import (
 
 	"github.com/go-xorm/core"
 	"github.com/go-xorm/xorm"
+
+	"github.com/labstack/echo/middleware"
 	glog "github.com/labstack/gommon/log"
 )
 
@@ -45,4 +47,8 @@ func (loggerBus *LoggerBus) BusinessUse() *log.Logger {
 func (loggerBus *LoggerBus) PersistenceUse() core.ILogger {
 	logFile := loggerBus.init("log/sql.log")
 	return xorm.NewSimpleLogger2(logFile, "[SQL]", log.Ldate|log.Lmicroseconds)
+}
+
+func (loggerBus *LoggerBus) HttpConfig() middleware.LoggerConfig {
+	return middleware.LoggerConfig{}
 }

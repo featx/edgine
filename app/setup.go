@@ -34,8 +34,9 @@ func (app *Edgine) Init() {
 
 	app.httpEngine = echo.New()
 
-	//app.httpEngine.SetLogger(loggerBus.EchoUse())
-	//app.httpEngine.Use(middleware.LoggerWithConfig(loggerBus.HttpConfig()))
+	app.httpEngine.Logger = loggerBus.EchoUse()
+	//app.httpEngine.DefaultHTTPErrorHandler()
+	app.httpEngine.Use(middleware.LoggerWithConfig(loggerBus.HttpConfig()))
 	app.httpEngine.Use(middleware.Recover())
 
 	err := graph.Provide(
