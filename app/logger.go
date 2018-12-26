@@ -38,8 +38,8 @@ func (loggerBus *LoggerBus) EchoUse() *glog.Logger {
 }
 
 func (loggerBus *LoggerBus) BusinessUse() *log.Logger {
-	logFile := loggerBus.init("log/pied.log")
-	return log.New(logFile, "[PID]", log.Ldate|log.Lmicroseconds)
+	logFile := loggerBus.init("log/edg.log")
+	return log.New(logFile, "[EDG]", log.Ldate|log.Lmicroseconds)
 }
 
 func (loggerBus *LoggerBus) PersistenceUse() core.ILogger {
